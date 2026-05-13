@@ -24,7 +24,7 @@ def transformar_descuento():
     df = pd.read_csv("/tmp/datos_productos.csv")
     df["Precio_descuento"] = df["Precio"] * 0.91
     df.to_csv("/tmp/datos_productos_transformados.csv", index = False)
-    print(df)
+    print("\n%s", df)
     print("Datos transformados correctamente.")
 
 def promedio_datos():
@@ -89,6 +89,7 @@ with DAG(
         task_id = "cargar_datos",
         python_callable = cargar
     )
+
 
 inicio >> tarea_extraer >> tarea_cargar >> fin
 tarea_extraer >> grupo_reportes
